@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import PokeAPI from './components/PokeAPI';
+import PokeFetch from './components/PokeFetch';
+import PokeAxios from './components/PokeAxios';
+
 
 function App() {
   return (
     <div className="App">
-      <PokeAPI/>
+      <PokeFetch />
+      <PokeAxios/>
     </div>
   );
 }
