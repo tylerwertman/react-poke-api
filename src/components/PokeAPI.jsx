@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react'
+import axios from 'axios';
 
 const PokeAPI = (props) => {
-    const [poke, setPoke] = useState([]);
-
+    // const [poke, setPoke] = useState([]);
+    const [responseData, setResponseData] = useState(null);
     useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=808')
-            .then(response => response.json())
-            .then(response => setPoke(response.results))
-    }, []);
-
+        axios.get('https://pokeapi.co/api/v2/pokemon?limit=808')
+            .then(response => {setResponseData(response.data.results)})
+        }, []);
+        console.log(responseData)
+        
     return (
         <div>
-            {poke.length > 0 && poke.map((pokemon, index) => {
-                return (<div key={index}>{index+1}: {pokemon.name}</div>)
-            })}
+            <h1>Pokemon 1-807</h1>
+            {
+            responseData.map((item, i)=>
+            <p key={i}>{i+1}: {item.name}</p>
+            )}
         </div>
     );
 }
