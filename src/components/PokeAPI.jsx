@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const PokeAPI = (props) => {
     // const [poke, setPoke] = useState([]);
-    const [responseData, setResponseData] = useState(null);
+    const [responseData, setResponseData] = useState([]);
     useEffect(() => {
         axios.get('https://pokeapi.co/api/v2/pokemon?limit=808')
             .then(response => {setResponseData(response.data.results)})
